@@ -3,17 +3,15 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -23,15 +21,30 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding{
+        enabled = true
     }
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    api rootProject.ext.androidx["androidx-appcompat"]
+    api rootProject.ext.androidx["androidx.lifecycle"]
+    api rootProject.ext.androidx["androidx.recyclerview"]
+    api rootProject.ext.androidx["androidx.constraintlayout"]
+    api rootProject.ext.androidx["androidx.cardview"]
+    api rootProject.ext.androidx["android.material"]
+    api rootProject.ext.androidx["androidx.navigation-fragment"]
+    api rootProject.ext.androidx["androidx.navigation-ui:"]
+    api rootProject.ext.dependencies["loadsir"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxpermissions"]
+    api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    api rootProject.ext.dependencies["immersionbar"]
+    api rootProject.ext.dependencies["glide"]
 }
